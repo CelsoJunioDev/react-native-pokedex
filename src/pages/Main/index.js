@@ -15,16 +15,9 @@ export default function Main({navigation}) {
   const [pokemons, setPokemons] = useState([]);
 
   useEffect(() => {
-    fetch('https://pokeapi.co/api/v2/pokemon', {
-      //busca
-      method: 'GET',
-      headers: {
-        accept: 'application/json',
-      },
-    })
-      .then((Response) => Response.json())
-      .then((data) => {
-        setPokemons(data.results);
+    api.get()
+      .then((response) => {
+        setPokemons(response.data.results);
       });
   }, []);
 
